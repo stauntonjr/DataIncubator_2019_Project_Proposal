@@ -23,7 +23,7 @@ anycov_tot = np.array([85.2,88.0,90.3,91.1,91.0])
 trace_pub_blk = go.Scatter(
   x = year,
   y = pubcov_blk
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'Black (public)'
   line = dict(
     color = ('rgb(205, 12, 24)'),
@@ -33,7 +33,7 @@ trace_pub_blk = go.Scatter(
 trace_pub_non = go.Scatter(
   x = year,
   y = pubcov_non
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'Non-Black (public)'
   line = dict(
     color = ('rgb(205, 12, 24)'),
@@ -43,7 +43,7 @@ trace_pub_non = go.Scatter(
 trace_pub_tot = go.Scatter(
   x = year,
   y = pubcov_tot
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'All (public)'
   line = dict(
     color = ('rgb(205, 12, 24)'),
@@ -53,7 +53,7 @@ trace_pub_tot = go.Scatter(
 trace_prv_blk = go.Scatter(
   x = year,
   y = prvcov_blk
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'Black (private)'
   line = dict(
     color = ('rgb(22, 96, 167)'),
@@ -63,7 +63,7 @@ trace_prv_blk = go.Scatter(
 trace_prv_non = go.Scatter(
   x = year,
   y = prvcov_non
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'Non-Black (private)'
   line = dict(
     color = ('rgb(22, 96, 167)'),
@@ -73,7 +73,7 @@ trace_prv_non = go.Scatter(
 trace_prv_tot = go.Scatter(
   x = year,
   y = prvcov_tot
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'All (private)'
   line = dict(
     color = ('rgb(22, 96, 167)'),
@@ -83,7 +83,7 @@ trace_prv_tot = go.Scatter(
 trace_any_blk = go.Scatter(
   x = year,
   y = anycov_blk
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'Black (any)'
   line = dict(
     color = ('rgb(0, 0, 0)'),
@@ -93,7 +93,7 @@ trace_any_blk = go.Scatter(
 trace_any_non = go.Scatter(
   x = year,
   y = anycov_non
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'Non-Black (any)'
   line = dict(
     color = ('rgb(0, 0, 0)'),
@@ -103,7 +103,7 @@ trace_any_non = go.Scatter(
 trace_any_tot = go.Scatter(
   x = year,
   y = anycov_tot
-  mode = 'lines+markers'
+  #mode = 'lines+markers'
   name = 'All (any)'
   line = dict(
     color = ('rgb(0, 0, 0)'),
@@ -122,3 +122,18 @@ layout = dict(title = 'Disparity in Health Insurance Coverage by Race',
 fig = dict(data=data, layout=layout)
 py.iplot(fig, filename='coverage')
 
+########### Display the chart
+
+app = dash.Dash()
+server = app.server
+
+app.layout = html.Div(children=[
+    html.H1('Census Data'),
+    dcc.Graph(
+        id='censusdata',
+        figure=fig
+    )]
+)
+
+if __name__ == '__main__':
+    app.run_server()
