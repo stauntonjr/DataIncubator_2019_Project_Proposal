@@ -5,7 +5,7 @@ import plotly.graph_objs as go
 import numpy as np
 
 ########### Set up the chart
-year = np.linspace(2013, 1, 2017)
+year = np.array([2013,2014,2015,2016,2017])
 
 pubcov_blk = np.array([40.7,42.3,43.5,44.0,43.7])
 pubcov_non = np.array([30.3,31.9,33.5,34.2,34.3])
@@ -118,7 +118,7 @@ census_data = [trace_any_tot, trace_any_blk, trace_any_non,
 census_layout = dict(title = 'Disparity in Health Insurance Coverage by Race',
                      xaxis = dict(title = 'Year',
                                   dtick = 1,
-                                  autorange = True),
+                                  range =[2013,2017]),
                      yaxis = dict(title = 'Insured (% National Population)',
                                   dtick = 10,
                                   range = [0,100])
