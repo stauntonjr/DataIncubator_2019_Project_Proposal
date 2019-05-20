@@ -116,10 +116,14 @@ census_data = [trace_any_tot, trace_any_blk, trace_any_non,
 
 # Edit layout
 census_layout = dict(title = 'Disparity in Health Insurance Coverage by Race',
-              xaxis = dict(title = 'Year'),
-              yaxis = dict(title = 'Insured (% National Population)'),
-              )
-              
+                     xaxis = dict(title = 'Year',
+                                  dtick = 1,
+                                  autorange = True),
+                     yaxis = dict(title = 'Insured (% National Population)',
+                                  dtick = 10,
+                                  range = [0,100])
+                     )
+
 census_fig = go.Figure(data=census_data, layout=census_layout)
 
 ########### Display the chart
@@ -133,7 +137,7 @@ app.layout = html.Div(children=[
         id='census',
         figure=census_fig
     ),
-    html.A('Code on Github', href='https://github.com/stauntonjr/TDI_2019_Project_Proposal'),
+    html.A('Code on Github', href='https://github.com/stauntonjr/DTI_2019_Project_Proposal'),
     html.Br(),
     html.A('Data Source', href='https://www.census.gov/programs-surveys/acs/data/pums.html'),
     ]
